@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Form from './components/Form';
 import TodoList from './components/TodoList';
+import arrow from'./assets/images/angulo-pequeno-hacia-abajo.png'
 
 function App() {
 
@@ -9,10 +10,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1 id='main-title'>Todo List App</h1>
+      <h1 id='main-title'>Todo List</h1>
       <div className="btn-section">
-        <button className='btn-prin' onClick={()=>setModal(!modal)}> add task </button>
-        <button className='btn-prin' onClick={()=>setModal(!modal)}>all </button>
+        <button className='btn-prin' onClick={()=>setModal(!modal)}>Add task </button>
+        <button className='btn-prin'>All <img src={arrow} className="arrow-selection"  /> </button>
       </div>
       {modal?
         <Form setModal={setModal}/>
@@ -20,7 +21,7 @@ function App() {
         null
       }
       <TodoList />
-      <h3>Clear History</h3>
+      <h3 id='footer-t'>Clear History</h3>
       
     </div>
   );

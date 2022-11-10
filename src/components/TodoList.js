@@ -1,27 +1,53 @@
 import React, { useState } from 'react';
 import'../assets/todoList.css'
 
+
+
 const TodoList = () => {
 
-    const [counter, setCounter]= useState(1)
-
-    const tasks = [counter]
-    console.log(counter)
+    const [activeItem, setActiveItem] = useState(false)
 
     return (
         <div className='list-continer'>
-            {
-                tasks.map(tasks=>{
-                    return(
-                        <div key={counter} className="list-item">
-                        </div>
-                    )
-                })
-            }
-            <div className="list-item">
+            <div className="list-item" onMouseEnter={()=>setActiveItem(true)} onMouseLeave={()=>setActiveItem(false)}>
+                <div className='content1'>
+                    <div className='square'></div>
+                    <div className='check-box'></div>
+                    <div className='content2'>
+                        <h4 id='task-t'>este es el texto</h4>
+                        <h6 id='task-p'>6:54pm 9/11/2001</h6>
+                    </div>
+                </div>
+                {
+                    activeItem?
+                    <div className="content1">
+                        <div className='check-box'></div>
+                        <div className='check-box'></div>
+                    </div>
+                    :
+                    null
+                }
+            </div> 
+            <div className="list-item" onMouseEnter={()=>setActiveItem(true)} onMouseLeave={()=>setActiveItem(false)}>
+                <div className='content1'>
+                    <div className='square'></div>
+                    <div className='check-box'></div>
+                    <div className='content2'>
+                        <h4 id='task-t'>este es el texto</h4>
+                        <h6 id='task-p'>6:54pm 9/11/2001</h6>
+                    </div>
+                </div>
+                {
+                    activeItem?
+                    <div className="content1">
+                        <div className='check-box'></div>
+                        <div className='check-box'></div>
+                    </div>
+                    :
+                    null
+                }
             </div>
-            <button onClick={()=>setCounter(counter +1)}> mas</button>
-            <button onClick={()=>setCounter(counter -1)}> menos</button>
+    
         </div>
     );
 };

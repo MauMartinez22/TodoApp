@@ -15,7 +15,7 @@ html{
   flex-direction: column; 
   align-items: center;
   padding: 5rem 0;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 
@@ -38,10 +38,24 @@ html{
   mix-blend-mode: multiply;
 }
 
+#footer-t{
+  
+  font-family: 'Raleway';
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.015em;
+  align-self: center;
+  color: #00ABB3;
+  width: 56%;
+
+}
 
 
 
 
+img.arrow-selection{
+  filter: invert(1);
+}
 
 button.btn-prin{
   width: 180px;
