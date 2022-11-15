@@ -6,7 +6,7 @@ import arrow from'./assets/images/angulo-pequeno-hacia-abajo.png'
 
 function App() {
 
-  const[ modal, setModal] = useState(false)
+  const[ modal, setModal] = useState(true)
 
   return (
     <div className="App">
