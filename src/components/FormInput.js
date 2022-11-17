@@ -1,26 +1,55 @@
 import React from 'react';
 import'../assets/form.css'
-import { Button, Modal, ModalContent,Form, Dropdown, Label  } from 'semantic-ui-react'
+import { Button, Modal, ModalContent,Form, Dropdown, Label, Divider, Input  } from 'semantic-ui-react'
 
-const FormInput = ({setModal}) => {
+const FormInput = ({setModal,inputText, setInputText, taskList, setTaskList}) => {
 
     const options = [
-        {
-            key: 'Jenny Hess',
-            value: 'Jenny Hess',
+            {
+            key: 'Green',
             image: <Label circular color="green" empty />
             },
             {
-            key: 'Elliot Fu',
-            value: 'Elliot Fu',
+            key: 'Blue',
             image: <Label circular color="blue" empty />
             },
             {
-            key: 'Stevie Feliciano',
-            value: 'Stevie Feliciano',
+            key: 'Red',
             image: <Label circular color="red" empty />
+            },
+            {
+            key: 'Purple',
+            image: <Label circular color="purple" empty />
             }
     ]
+
+    const handleInputText =(e) =>{
+        console.log(e.target.value)
+        setInputText(e.target.value)
+    }
+
+    const handleSubmit= (e) => {
+        
+        setTaskList([
+            ...taskList,{name:inputText, date:`${date}`, id: Math.random() *10, color: "#F8C4B4" }
+        ])
+        console.log(taskList)
+
+
+    }
+
+
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+
+
+//Time
+    // const time = d.toLocaleString([],{
+    // hour:'2-digit',
+    // minute:'2-digit'
+    // })
+
 
     return (
     <Modal
@@ -29,18 +58,19 @@ const FormInput = ({setModal}) => {
     >
         <Modal.Header>Select a Photo</Modal.Header>
         <ModalContent>
-            <Form>
-                <Form.Field>
-                    <label>First Name</label>
-                    <input placeholder='First Name' />
+            <Form onSubmit={handleSubmit}>
+                <Form.Field >
+                    <label>Title</label>
+                    <input onChange={handleInputText} placeholder='Task name title' />
                 </Form.Field>
             </Form>
+            <Input fluid placeholder='Content' />
+            <Divider/>
             <Dropdown
-            selection
-            options={options}
-            simple item
-            compact
-            defaultValue={options[1]}
+                selection
+                options={options}
+                simple item
+                compact
             />
         </ModalContent>    
         <Modal.Actions>
@@ -48,10 +78,13 @@ const FormInput = ({setModal}) => {
             Nope
         </Button>
         <Button
-            content="Yep, that's me"
+            content="Save"
             labelPosition='right'
             icon='checkmark'
-            onClick={() => setModal(false)}
+            onClick={() => {
+                setModal(false)
+                handleSubmit()
+            }}
             positive
         />
         </Modal.Actions>

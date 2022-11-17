@@ -7,6 +7,8 @@ import arrow from'./assets/images/angulo-pequeno-hacia-abajo.png'
 function App() {
 
   const[ modal, setModal] = useState(true)
+  const [inputText, setInputText] = useState("")
+  const [taskList, setTaskList] = useState([])
 
   return (
     <div className="App">
@@ -16,11 +18,11 @@ function App() {
         <button className='btn-prin'>All <img alt='arrow' src={arrow} className="arrow-selection"  /> </button>
       </div>
       {modal?
-        <Form setModal={setModal} modal={modal}/>
+        <Form setModal={setModal} inputText={inputText} setInputText={setInputText} taskList={taskList} setTaskList={setTaskList} />
         :
         null
       }
-      <TodoList />
+      <TodoList taskList={taskList} />
       <h3 id='footer-t'>Clear History</h3>
       
     </div>
